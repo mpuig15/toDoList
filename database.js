@@ -29,12 +29,14 @@ export async function getTask(id) {
 export async function createTask(taskEx, creatorEx) {
     const today = new Date().toLocaleDateString();
     console.log(today);
+    console.log(`La task es ${taskEx}`);
+    console.log(`El creator es ${creatorEx}`);
     await pool.query(`
     INSERT INTO tasks (task, creator, created) values (${taskEx}, ${creatorEx}, 2023-10-10`)
     
 }
 
 export async function deleteTask(taskId) {
-    const [result] = await pool.query(`
+    await pool.query(`
     DELETE FROM tasks WHERE id = ${taskId}`);
 }
