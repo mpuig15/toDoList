@@ -1,14 +1,14 @@
-import { Pool, Client } from 'pg';
+import pg from 'pg';
 import dotenv from 'dotenv';
 dotenv.config();
  
-const pool = new Pool({
+const pool = new pg.Pool({
     host: process.env.PGSQL_HOST,
     user: process.env.PGSQL_USER,
     password: process.env.PGSQL_PASSWORD,
     database: process.env.PGSQL_DATABASE,
     port: process.env.PGSQL_PORT,
-}).promise();
+});
 
 export async function getTasks(){
     const [rows] = await pool.query("SELECT * from tasks");
