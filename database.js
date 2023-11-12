@@ -32,7 +32,7 @@ export async function createTask(taskEx, creatorEx) {
     console.log(`La task es ${taskEx}`);
     console.log(`El creator es ${creatorEx}`);
     await pool.query(`
-    INSERT INTO tasks (task, creator, created) values ($1, $2, 2023-10-10`, taskEx, creatorEx)
+    INSERT INTO tasks (task, creator, created) values ($1, $2, '2023-10-10');`, taskEx, creatorEx)
     
 }
 
