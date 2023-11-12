@@ -27,18 +27,14 @@ export async function getTask(id) {
 }
 
 export async function createTask(taskEx, creatorEx) {
+    const today = new Date().toLocaleDateString();
+    console.log(today);
     await pool.query(`
-    INSERT INTO tasks (task, creator, created) values ('Esto es una prueba', 'Laia', '2023-10-12')`)
+    INSERT INTO tasks (task, creator, created) values (${taskEx}, ${creatorEx}, ${today})`)
     
 }
 
 export async function deleteTask(taskId) {
     const [result] = await pool.query(`
-    DELETE FROM tasks WHERE id = ?
-    `, [taskId])
-    /* return {
-        id: result.insertId,
-        task,
-        creator
-    } */
+    DELETE FROM tasks WHERE id = ${taskId}`);
 }
