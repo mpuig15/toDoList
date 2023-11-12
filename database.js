@@ -31,8 +31,8 @@ export async function createTask(taskEx, creatorEx) {
     console.log(today);
     console.log(`La task es ${taskEx}`);
     console.log(`El creator es ${creatorEx}`);
-    const query = 'INSERT INTO tasks (task, creator, created) values ($1, $2, 2023-10-10)';
-    const values = [taskEx, creatorEx]
+    const query = 'INSERT INTO tasks (task, creator, created) values ($1, $2, $3)';
+    const values = [taskEx, creatorEx, today]
     pool.query(query, values).then(res => console.log(res))
     .catch(err => console.error(err))
 
