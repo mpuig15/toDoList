@@ -1,13 +1,13 @@
-import mysql from 'mysql2';
-
+import { Pool, Client } from 'pg';
 import dotenv from 'dotenv';
 dotenv.config();
-
-const pool = mysql.createPool({
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE
+ 
+const pool = new Pool({
+    host: process.env.PGSQL_HOST,
+    user: process.env.PGSQL_USER,
+    password: process.env.PGSQL_PASSWORD,
+    database: process.env.PGSQL_DATABASE,
+    port: process.env.PGSQL_PORT,
 }).promise();
 
 export async function getTasks(){
