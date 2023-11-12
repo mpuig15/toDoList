@@ -28,13 +28,8 @@ export async function getTask(id) {
 
 export async function createTask(task, creator) {
     const [result] = await pool.query(`
-    INSERT INTO tasks (task, creator) values (?, ?)
-    `, [task, creator])
-    return {
-        id: result.insertId,
-        task,
-        creator
-    }
+    INSERT INTO tasks (task, creator) values (${task}, ${creator})`)
+    
 }
 
 export async function deleteTask(taskId) {
