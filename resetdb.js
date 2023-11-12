@@ -4,10 +4,11 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const pool = mysql.createPool({
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE
+    host: process.env.PGSQL_HOST,
+    user: process.env.PGSQL_USER,
+    password: process.env.PGSQL_PASSWORD,
+    database: process.env.PGSQL_DATABASE,
+    port: process.env.PGSQL_PORT
 }).promise();
 
 async function deleteContent() {
@@ -25,7 +26,7 @@ async function deleteTable() {
 async function createTable() {
     await pool.query(`
     CREATE table tasks (
-        id integer PRIMARY KEY AUTO_INCREMENT,
+        id integer PRIMARY KEY SERIAL,
         task VARCHAR(255) NOT NULL,
         creator TEXT NOT NULL,
         created DATE NOT NULL DEFAULT(CURDATE())
