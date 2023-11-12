@@ -11,7 +11,9 @@ const pool = new pg.Pool({
 });
 
 export async function getTasks(){
-    const [rows] = await pool.query("SELECT * from tasks;");
+    console.log('I am here!')
+    const rows = await pool.query("SELECT * from tasks;");
+    console.log(rows)
     return rows;
 }
 
