@@ -26,9 +26,9 @@ export async function getTask(id) {
     return rows[0]
 }
 
-export async function createTask(task, creator) {
+export async function createTask(taskEx, creatorEx) {
     const [result] = await pool.query(`
-    INSERT INTO tasks (task, creator) values (${task}, ${creator})`)
+    INSERT INTO tasks (task, creator) values (${taskEx}, ${creatorEx})`)
     
 }
 
