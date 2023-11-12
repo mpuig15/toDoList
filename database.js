@@ -30,7 +30,7 @@ export async function createTask(taskEx, creatorEx) {
     const today = new Date().toLocaleDateString();
     console.log(today);
     await pool.query(`
-    INSERT INTO tasks (task, creator, created) values (${taskEx}, ${creatorEx}, ${today})`)
+    INSERT INTO tasks (task, creator, created) values (${taskEx}, ${creatorEx}, 2023-10-10`)
     
 }
 
